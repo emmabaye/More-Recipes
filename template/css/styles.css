@@ -1,0 +1,99 @@
+.navbar{
+	background-color: purple !important;
+}
+
+.navbar a{
+	color: grey !important;
+}
+
+.navbar a.navbar-brand{
+	color: #5cb85c !important;
+}
+
+
+.navbar a.active{
+	color: white !important;
+}
+
+.intro{
+	position:relative;
+	background-color: red;
+	border-width: 2px;
+	border-style: solid;
+	border-color: blue;
+	min-height: 400px;
+
+}
+
+.jumbotron{
+	margin-top: 40px;
+	opacity: 0.5;
+}
+
+.feature{
+	min-height: 200px;
+}
+
+/**** Catalog ****/
+.catalog-search{
+	margin-left: auto !important;
+	margin-right:auto !important;
+	margin-top: 25px !important;
+}
+
+.search-result{
+	height:auto;
+	margin-top: 20px;
+	padding-bottom: 50px;
+}
+
+.result{
+	min-height:75px;
+	margin-top:4px;
+	margin-bottom: 4px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: aquamarine;
+	border-radius: 3px;
+}
+
+.result:hover{
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+
+/****Recipe*****/
+.recipe-name{
+	padding: 20px;
+}
+
+.recipe-details{
+
+}
+
+.recipe-reviews{
+	
+}
+
+.reviews{
+
+}
+
+.add-review{
+	padding-bottom: 50px;
+}
+
+
+
+
+/****Profile****/
+
+
+
+footer{
+	height: 25px;
+	background-color: black;
+}
+
