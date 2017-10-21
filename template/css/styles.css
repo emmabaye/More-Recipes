@@ -1,3 +1,10 @@
+body{
+	background-image: url('../img/tile2a.jpg');
+	background-repeat: repeat;
+	background-color: green;
+
+}
+
 .navbar{
 	background-color: purple !important;
 }
@@ -18,14 +25,10 @@
 .intro{
 	position:relative;
 	background-color: red;
-	border-width: 2px;
-	border-style: solid;
-	border-color: blue;
 	min-height: 500px;
 	background-image: url("../img/food.jpg");
 	background-attachment: fixed;
 	background-size:cover;
-
 }
 
 .jumbotron{
@@ -33,8 +36,20 @@
 	opacity: 0.8;
 }
 
+.recipe-features{
+	color: white;
+	padding-bottom: 200px;
+
+}
+
 .feature{
-	min-height: 200px;
+	min-height: 150px;
+	padding-bottom: 50px;border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+
+	
 }
 
 /**** Catalog ****/
@@ -48,6 +63,7 @@
 	height:auto;
 	margin-top: 20px;
 	padding-bottom: 50px;
+	color: white;
 }
 
 .result{
@@ -56,43 +72,133 @@
 	margin-bottom: 4px;
 	margin-left: 5px;
 	margin-right: 5px;
-	background-color: aquamarine;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
 	border-radius: 3px;
 }
 
-.result:hover{
-	border-style: solid;
-	border-color: black;
-	border-width: 2px;
+.result > h4 {
+	margin:4px;
 }
+
+.popular-recipes a{
+	background-color: transparent;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+	color: white;
+	
+}
+
+
 
 
 /****Recipe*****/
 .recipe-name{
+	color: white;
 	padding: 20px;
 }
 
-.recipe-details{
 
+
+.recipe-directions{
+	color: white;
+}
+
+.recipe-details{
+	color:white;
+}
+
+.recipe-vote {
+	color: white;
 }
 
 .recipe-reviews{
-	
+	color: white;
+
 }
 
-.reviews{
-
+.review{
+	color:white;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	padding: 1%;
 }
 
 .add-review{
 	padding-bottom: 50px;
+	color: white;
+	opacity: 0.7;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+}
+
+.recipes-header{
+	color: white;
 }
 
 
 
 
-/****Profile****/
+/**** My recipes****/
+.add-recipe {
+	color: white;
+}
 
+.add-recipe > li{
+	background-color: transparent;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+}
+
+.my-recipes > li {
+	background-color: transparent;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+	color: white;
+}
+
+.add-recipe:hover, .my-recipes > li:hover{
+	background-color: white;
+	color: black;
+	opacity: 0.7;
+}
+
+
+
+/****profile***/
+
+.profile{
+	color: white;
+}
+
+.profile  li{
+	background-color: transparent;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+}
+
+.profile a{
+	background-color: transparent;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+	border-radius: 3px;
+	color: white;
+}
 
 
 footer{
