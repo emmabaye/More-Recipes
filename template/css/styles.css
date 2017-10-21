@@ -21,13 +21,16 @@
 	border-width: 2px;
 	border-style: solid;
 	border-color: blue;
-	min-height: 400px;
+	min-height: 500px;
+	background-image: url("../img/food.jpg");
+	background-attachment: fixed;
+	background-size:cover;
 
 }
 
 .jumbotron{
 	margin-top: 40px;
-	opacity: 0.5;
+	opacity: 0.8;
 }
 
 .feature{
