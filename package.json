@@ -1,0 +1,35 @@
+{
+  "name": "more-recipes-server",
+  "version": "1.0.0",
+  "description": "Server for more-recipes web application",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node server.js",
+    "test": "mocha --compilers js:babel-register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmabaye/more-recipes.git"
+  },
+  "author": "Emmanuel Abaye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmabaye/more-recipes/issues"
+  },
+  "homepage": "https://github.com/emmabaye/more-recipes#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2"
+  }
+}
