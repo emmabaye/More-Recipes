@@ -10,8 +10,6 @@ let routes = (app) => {
 
   app.post('/api/recipes/:recipeId/reviews', RecipeController.postRecipeReview);
 
- // app.get('/api/recipes?sort=upvotes&order=des', RecipeController.getRecipesWithMostVote);
-
   app.get('/api/recipes', RecipeController.getRecipes);
 };
 
