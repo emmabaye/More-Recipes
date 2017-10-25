@@ -1,5 +1,5 @@
 body{
-	background-image: url('../img/tile2a.jpg');
+	background-image: url('../img/purple1.jpg');
 	background-repeat: repeat;
 	background-color: green;
 
@@ -14,7 +14,7 @@ body{
 }
 
 .navbar a.navbar-brand{
-	color: #5cb85c !important;
+	color: yellow !important;
 }
 
 
