@@ -1,8 +1,12 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { routes } from './routes/index.js';
+const express = require('express');
+const dotenv = require('dotenv');
+const routes = require('./routes/index.js');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 dotenv.config();
 
