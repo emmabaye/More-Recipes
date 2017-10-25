@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 body {
 	background-image: url('../img/tile2a.jpg');
+||||||| merged common ancestors
+body{
+	background-image: url('../img/tile2a.jpg');
+=======
+body{
+	background-image: url('../img/purple1.jpg');
+>>>>>>> development
 	background-repeat: repeat;
 	background-color: green;
 }
@@ -12,8 +20,16 @@ body {
 	color: grey !important;
 }
 
+<<<<<<< HEAD
 .navbar a.navbar-brand {
 	color: #5cb85c !important;
+||||||| merged common ancestors
+.navbar a.navbar-brand{
+	color: #5cb85c !important;
+=======
+.navbar a.navbar-brand{
+	color: yellow !important;
+>>>>>>> development
 }
 
 .navbar a.active {
