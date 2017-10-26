@@ -4,8 +4,8 @@
   "description": "Server for more-recipes web application",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha ./server/test"
+    "start": "node ./server/server.js",
+    "test": "mocha ./server/test --exit"
   },
   "repository": {
     "type": "git",
