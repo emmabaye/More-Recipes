@@ -1,4 +1,3 @@
-// import { recipes } from '../models/dummy-data.js';
 const recipes = require('../models/dummy-data.js');
 
 class RecipeController {
@@ -46,7 +45,7 @@ class RecipeController {
 
     for (let i = 0; i < recipes.length; i++) {
       if (recipes[i].id == req.params.recipeId) {
-        recipes[i].reviews.push(req.body.review);
+        recipes[i].reviews.push(req.body);
       }
     }
 
@@ -54,6 +53,6 @@ class RecipeController {
   }
 }
 
-// export { RecipeController };
+
 module.exports = RecipeController;
 
