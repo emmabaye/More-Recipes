@@ -2,6 +2,8 @@
 const RecipeController = require('../controllers/recipe-controller.js');
 
 const routes = (app) => {
+  app.get('/', (req, res) => res.json({ title: 'Welcome to MoreRecipes' }));
+
   app.post('/api/recipes', RecipeController.postRecipe);
 
   app.put('/api/recipes/:recipeId', RecipeController.putRecipe);
