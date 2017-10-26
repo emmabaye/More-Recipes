@@ -1,12 +1,12 @@
-//import { RecipeController } from '../controllers/recipe-controller.js';
+// import { RecipeController } from '../controllers/recipe-controller.js';
 const RecipeController = require('../controllers/recipe-controller.js');
 
-let routes = (app) => {
+const routes = (app) => {
   app.post('/api/recipes', RecipeController.postRecipe);
 
   app.put('/api/recipes/:recipeId', RecipeController.putRecipe);
 
-  app.delete('/api/recipes/:recipeId', RecipeController.deleteRecipe); 
+  app.delete('/api/recipes/:recipeId', RecipeController.deleteRecipe);
 
   app.post('/api/recipes/:recipeId/reviews', RecipeController.postRecipeReview);
 
@@ -14,5 +14,5 @@ let routes = (app) => {
 };
 
 module.exports = routes;
-//export { routes };
+// export { routes };
 
