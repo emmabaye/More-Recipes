@@ -1,4 +1,3 @@
-// import { RecipeController } from '../controllers/recipe-controller.js';
 const RecipeController = require('../../controllers/recipe-controller.js');
 
 const routes = (app) => {

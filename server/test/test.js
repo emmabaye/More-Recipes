@@ -1,9 +1,6 @@
-
-
 const chai = require('chai');
 const expect = require('chai').expect;
 const recipes = require('../models/dummy-data.js');
-
 
 chai.use(require('chai-http'));
 
@@ -51,11 +48,9 @@ describe('API endpoints /api/v1/recipes ', () => {
 
   // PUT - modify a recipe
   it('should modify a recipe', () => {
-    const modifiedRecipe = recipes[3];
-    modifiedRecipe.name = 'Akara';
     return chai.request(app)
       .put('/api/v1/recipes/4')
-      .send(modifiedRecipe)
+      .send({name: 'Akara'})
       .then((res) => {
         expect(res).to.have.status(200);
         expect(res).to.be.json;
