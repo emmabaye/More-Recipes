@@ -1,13 +1,13 @@
 const recipes = require('../models/dummy-data.js');
 
 class RecipeController {
-  static postRecipe(req, res, next) {
+  static postRecipe(req, res) {
     console.log('req.body: ', req.body);
   	recipes.push(req.body);
   	res.json(recipes);
   }
 
-  static putRecipe(req, res, next) {
+  static putRecipe(req, res) {
     console.log(req.params.recipeId);
 
     for (let i = 0; i < recipes.length; i++) {
@@ -19,7 +19,7 @@ class RecipeController {
     return res.json(recipes);
   }
 
-  static deleteRecipe(req, res, next) {
+  static deleteRecipe(req, res) {
     console.log(req.params.recipeId);
 
     for (let i = 0; i < recipes.length; i++) {
@@ -31,7 +31,7 @@ class RecipeController {
     return res.json(recipes);
   }
 
-  static getRecipes(req, res, next) {
+  static getRecipes(req, res) {
     if (req.query.sort == 'upvotes' && req.query.order == 'des') {
       const sortedRecipes = recipes.sort((a, b) => b.upvotes - a.upvotes);
       return res.json(sortedRecipes);
@@ -40,7 +40,7 @@ class RecipeController {
     return res.json(recipes);
   }
 
-  static postRecipeReview(req, res, next) {
+  static postRecipeReview(req, res) {
     console.log(req.params.recipeId);
 
     for (let i = 0; i < recipes.length; i++) {
