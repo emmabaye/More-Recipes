@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/emmabaye/more-recipes.svg?branch=master)](https://travis-ci.org/emmabaye/more-recipes)
 [![Coverage Status](https://coveralls.io/repos/github/emmabaye/more-recipes/badge.svg?branch=master)](https://coveralls.io/github/emmabaye/more-recipes?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bdd1ed14d9a5842f38b0/maintainability)](https://codeclimate.com/github/emmabaye/more-recipes/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bdd1ed14d9a5842f38b0/test_coverage)](https://codeclimate.com/github/emmabaye/more-recipes/test_coverage)
+
 
 Application for sharing recipes. Built for Andela Developer Challenge, bootcamp-28
 
