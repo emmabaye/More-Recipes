@@ -9,7 +9,7 @@ chai.use(require('chai-http'));
 
 const app = require('../server.js');
 
-describe('API endpoints /api/recipes ', () => {
+describe('API endpoints /api/v1/recipes ', () => {
   before(() => {
 
   });
@@ -29,7 +29,7 @@ describe('API endpoints /api/recipes ', () => {
 
   // GET - Return all recipes
   it('should return all recipes', () => chai.request(app)
-    .get('/api/recipes')
+    .get('/api/v1/recipes')
     .then((res) => {
       expect(res).to.have.status(200);
       expect(res).to.be.json;
@@ -40,7 +40,7 @@ describe('API endpoints /api/recipes ', () => {
   it('should post a recipe ', () => {
     const initialLength = recipes.length;
     return chai.request(app)
-      .post('/api/recipes')
+      .post('/api/v1/recipes')
       .send({ id: '6', name: 'Pancake' })
       .then((res) => {
         expect(res).to.have.status(200);
@@ -54,7 +54,7 @@ describe('API endpoints /api/recipes ', () => {
     const modifiedRecipe = recipes[3];
     modifiedRecipe.name = 'Akara';
     return chai.request(app)
-      .put('/api/recipes/4')
+      .put('/api/v1/recipes/4')
       .send(modifiedRecipe)
       .then((res) => {
         expect(res).to.have.status(200);
@@ -65,7 +65,7 @@ describe('API endpoints /api/recipes ', () => {
 
   // POST - post a review for recipe
   it('post a review for a recipe', () => chai.request(app)
-    .post('/api/recipes/4/reviews')
+    .post('/api/v1/recipes/4/reviews')
     .send({ name: 'John', review: 'Great recipe' })
     .then((res) => {
       expect(res).to.have.status(200);
@@ -77,7 +77,7 @@ describe('API endpoints /api/recipes ', () => {
   it('should delete a recipe', () => {
     const initialLength = recipes.length;
     chai.request(app)
-      .post('/api/recipes/4')
+      .post('/api/v1/recipes/4')
       .then((res) => {
         expect(res).to.have.status(200);
         expect(res).to.be.json;
