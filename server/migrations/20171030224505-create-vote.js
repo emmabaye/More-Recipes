@@ -9,11 +9,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       upvote: {
-        type: Sequelize.INTEGER
-      },
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      validate: {min: 0}
+    },
       downvote: {
-        type: Sequelize.INTEGER
-      },
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      validate: {min: 0}
+    },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
