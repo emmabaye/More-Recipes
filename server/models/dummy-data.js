@@ -45,4 +45,4 @@ const recipes = [{
 },
 ];
 
-module.exports = recipes;
+export default recipes;
