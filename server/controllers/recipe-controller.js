@@ -1,4 +1,4 @@
-import recipes from '../models/dummy-data.js';
+/* import recipes from '../models/dummy-data.js';
 
 class RecipeController {
   static postRecipe(req, res) {
@@ -53,4 +53,6 @@ class RecipeController {
 
 
 export default RecipeController;
+
+*/
 
