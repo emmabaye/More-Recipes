@@ -1,4 +1,4 @@
-const recipes = require('../models/dummy-data.js');
+import recipes from '../models/dummy-data.js';
 
 class RecipeController {
   static postRecipe(req, res) {
@@ -52,5 +52,5 @@ class RecipeController {
 }
 
 
-module.exports = RecipeController;
+export default RecipeController;
 

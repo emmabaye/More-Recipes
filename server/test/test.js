@@ -1,10 +1,10 @@
-const chai = require('chai');
-const expect = require('chai').expect;
-const recipes = require('../models/dummy-data.js');
+import chai from 'chai';
+import recipes from  '../models/dummy-data.js';
+import app from '../server.js';
 
 chai.use(require('chai-http'));
 
-const app = require('../server.js');
+const expect = chai.expect;
 
 describe('API endpoints /api/v1/recipes ', () => {
   before(() => {

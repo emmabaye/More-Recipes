@@ -1,4 +1,4 @@
-const RecipeController = require('../../controllers/recipe-controller.js');
+import  RecipeController  from '../../controllers/recipe-controller.js';
 
 const routes = (app) => {
   app.get('/', (req, res) => res.json({ title: 'Welcome to MoreRecipes' }));
@@ -14,5 +14,5 @@ const routes = (app) => {
   app.get('/api/v1/recipes', RecipeController.getRecipes);
 };
 
-module.exports = routes;
+export default routes;
 
