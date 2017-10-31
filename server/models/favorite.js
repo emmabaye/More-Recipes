@@ -6,8 +6,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        Favorite.belongsTo(Users);
-        Favorite.belongsTo(Recipes);
+        Favorite.belongsTo(models.User, {
+          foreignKey:'userId',
+          onDelete: 'CASCADE'
+        });
+        Favorite.belongsTo(models.Recipe,{
+          foreignKey: 'recipeId',
+          onDelete: 'CASCADE'
+        });
       }
     }
   });

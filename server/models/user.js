@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate(models) {
         User.hasMany(models.Recipe);
-        User.hasMany(models.Reviews);
+        User.hasMany(models.Review);
         User.hasMany(models.Vote);
         User.hasMany(models.Favorite);
       },

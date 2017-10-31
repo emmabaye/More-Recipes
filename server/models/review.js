@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Review = sequelize.define('Review', {
+  const Review = sequelize.define('Review', {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -9,13 +9,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Review.belongsTo(models.Recipe);
-        Review.belongsTo(models.Users);
-      }
-    }
   });
+ Review.associate = (models) => {
+  Review.belongsTo(models.Recipe,{
+    foreignKey: 'recipeId',
+    onDelete: 'CASCADE'
+  });
+  Review.belongsTo(models.User,{
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
+  });
+}
   return Review;
 };

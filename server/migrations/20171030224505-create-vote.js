@@ -9,15 +9,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       upvote: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       defaultValue: 0,
       validate: {min: 0}
     },
       downvote: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       defaultValue: 0,
       validate: {min: 0}
     },
+    recipeId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Recipes',
+          key: 'id'
+        }
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

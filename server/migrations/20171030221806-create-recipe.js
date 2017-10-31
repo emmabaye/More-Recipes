@@ -10,7 +10,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       ingredients: {
         type: Sequelize.STRING,
@@ -19,6 +19,14 @@ module.exports = {
       directions: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

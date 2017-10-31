@@ -16,9 +16,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        Recipe.belongsTo(models.User);
+        Recipe.belongsTo(models.User, {
+          foreignKey:'userId',
+          onDelete: 'CASCADE'
+        });
         Recipe.hasMany(models.Vote);
-        Recipe.hasMany(models.Reviews);
+        Recipe.hasMany(models.Review);
       }
     }
   });
