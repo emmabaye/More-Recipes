@@ -4,8 +4,9 @@
   "description": "Server for more-recipes web application",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "node ./build/server.js",
     "build-server": " node ./node_modules/babel-cli/bin/babel.js -d ./build ./server",
+    "heroku-postbuild": "npm run build-server",
     "start:dev": "nodemon --exec node ./node_modules/babel-cli/bin/babel-node.js ./server/server.js",
     "test": " nyc mocha  --compilers js:babel-core/register ./server/test --exit && nyc report --reporter=text-lcov | coveralls"
   },
