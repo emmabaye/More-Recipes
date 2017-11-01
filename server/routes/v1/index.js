@@ -14,7 +14,7 @@ const routes = (app) => {
 
   app.put('/api/v1/recipes/:recipeId', RecipeController.putRecipe);
 
-  // app.delete('/api/v1/recipes/:recipeId', RecipeController.deleteRecipe);
+  app.delete('/api/v1/recipes/:recipeId', RecipeController.deleteRecipe);
 
   // app.post('/api/v1/recipes/:recipeId/reviews', RecipeController.postRecipeReview);
 

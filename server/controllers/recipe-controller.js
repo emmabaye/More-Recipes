@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 const Recipe = Model.Recipe;
 
 class RecipeController {
+
   // POST: method for authenticated user to add a recipe
   static postRecipe(req, res) {
     const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
@@ -22,6 +23,7 @@ class RecipeController {
   }
 
 
+  //
   static putRecipe(req, res) {
     const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
     Recipe.findById(req.params.recipeId)
@@ -53,6 +55,37 @@ class RecipeController {
         });
       });
   }
+
+
+  static deleteRecipe(req, res){
+    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    Recipe.findById(req.params.recipeId)
+      .then((recipe) => {
+        if (!recipe) {
+          return res.status(404).send({ error: 'Recipe not found' });
+        }
+
+        if (userId != recipe.creatorId) {
+          console.log('USERID ', userId);
+          console.log('recipeID', recipe.creatorId);
+          return res.status(400).send({ error: 'You do not have pernission to modify this recipe' });
+        }
+
+      Recipe.destroy({
+          where: {
+            id: req.params.recipeId
+          }
+        })
+        .then(deletedRecipe => {
+            if (!deletedRecipe) {
+            return res.status(500).send({ error: 'Could not update recipe' });
+          }
+
+          return res.status(200).send({ message: 'Recipe Deleted' });
+        });
+      });
+  }
+
 }
 
 
