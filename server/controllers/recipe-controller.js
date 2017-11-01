@@ -22,7 +22,6 @@ class RecipeController {
   }
 
 
-  //
   static putRecipe(req, res) {
     const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
     Recipe.findById(req.params.recipeId)
@@ -43,7 +42,7 @@ class RecipeController {
           directions: req.body.directions || recipe.directions,
         }, {
           where: {
-            id: req.params.recipeId
+            id: req.params.recipeId,
           },
         }).then((updatedRecipe) => {
           if (!updatedRecipe) {
@@ -87,7 +86,22 @@ class RecipeController {
 
 
   static getAllRecipes(req, res) {
-    Recipe.findAll()
+    
+    if(req.query.sort == 'upvotes' && req.query.order == 'desc') {
+      return Recipe.findAll({
+      limit:30,
+      order: [[req.query.sort, req.query.order]]
+    }).then((recipes) => {
+      if (!recipes) {
+        return res.status(500).send({
+          error: 'Could not get all recipes',
+        });
+      }
+      return res.status(200).send(recipes);
+    });
+    }
+
+    return Recipe.findAll()
       .then((recipes) => {
         if (!recipes) {
           return res.status(500).send({ error: 'Could not get all recipes' });
@@ -107,17 +121,17 @@ class RecipeController {
         }
 
         recipe.reviews.push({
-            id: recipe.reviews.length + 1,
-            userId: userId,
-            name: req.body.name,
-            comment: req.body.comment
-          });
+          id: recipe.reviews.length + 1,
+          userId,
+          name: req.body.name,
+          comment: req.body.comment,
+        });
 
         Recipe.update({
-          reviews: recipe.reviews
+          reviews: recipe.reviews,
         }, {
           where: {
-            id: req.params.recipeId
+            id: req.params.recipeId,
           },
         }).then((updatedRecipe) => {
           if (!updatedRecipe) {
@@ -130,7 +144,11 @@ class RecipeController {
   }
 
 
-  
+  static getMostUpVotedRecipes(req, res) {
+    
+
+  }
+
 }
 
 

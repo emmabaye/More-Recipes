@@ -37,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
+    UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      }
   }); 
       Recipe.associate = (models) => {
         Recipe.belongsTo(models.User, {

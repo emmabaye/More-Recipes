@@ -45,6 +45,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue:0
       },
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
