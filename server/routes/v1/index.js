@@ -12,13 +12,13 @@ const routes = (app) => {
 
   app.post('/api/v1/recipes', isLoggedIn, RecipeController.postRecipe);
 
-  app.put('/api/v1/recipes/:recipeId', RecipeController.putRecipe);
+  app.put('/api/v1/recipes/:recipeId',isLoggedIn,RecipeController.putRecipe);
 
-  app.delete('/api/v1/recipes/:recipeId', RecipeController.deleteRecipe);
+  app.delete('/api/v1/recipes/:recipeId', isLoggedIn,RecipeController.deleteRecipe);
 
   // app.post('/api/v1/recipes/:recipeId/reviews', RecipeController.postRecipeReview);
 
-  // app.get('/api/v1/recipes', RecipeController.getRecipes);
+  app.get('/api/v1/recipes', RecipeController.getAllRecipes);
 };
 
 export default routes;
