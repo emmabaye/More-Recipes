@@ -14,6 +14,16 @@ export default (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     occupation: DataTypes.STRING,
     interests: DataTypes.STRING,
+    favoriteRecipes: {
+        type: DataTypes.JSONB,
+        allowNull: true,
+        defaultValue: [{
+              "id": 1,
+              "name": "Rice and Beans",
+              "creatorId": 2,
+            }
+        ]
+      }
   }); 
     
       User.associate = (models) => {
@@ -25,4 +35,6 @@ export default (sequelize, DataTypes) => {
   
   return User;
 };
+
+
 

@@ -13,14 +13,30 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     creatorId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    UserId: {
-      type: DataTypes.INTEGER,
+    reviews: {
+      type: DataTypes.JSONB,
       allowNull: true
-    }
+    },
+    upvotes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    downvotes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    views: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
   }); 
       Recipe.associate = (models) => {
         Recipe.belongsTo(models.User, {

@@ -31,6 +31,16 @@ module.exports = {
       interests: {
         type: Sequelize.STRING
       },
+      favoriteRecipes: {
+        type: Sequelize.JSONB,
+        allowNull: true,
+        defaultValue: [{
+              "id": 1,
+              "name": "Rice and Beans",
+              "creatorId": 2,
+            }
+        ]
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
