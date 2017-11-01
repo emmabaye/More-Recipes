@@ -42,7 +42,7 @@ class UserController {
   		if (!validPassword) {
   			return res.status(401).send({ auth: false, token: null });
   		}
-  		const token = jwt.sign({ id: user._id }, 'secretKey', { expiresIn: 86400 });
+  		const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
 
   		return res.status(200).send({ auth: true, token });
   	});

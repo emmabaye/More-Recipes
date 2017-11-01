@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Vote = sequelize.define('Vote', {
+  const Vote = sequelize.define('Vote', {
     upvote: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
@@ -11,9 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       validate: {min: 0}
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
+  }); 
+      Vote.associate = (models)  => {
         Vote.belongsTo(models.User, {
           foreignKey:'userId',
           onDelete: 'CASCADE'
@@ -22,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'recipeId',
           onDelete: 'CASCADE'
         });
-      }
-    }
-  });
+      };
+   
   return Vote;
 };

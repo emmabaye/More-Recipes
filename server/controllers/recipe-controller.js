@@ -1,58 +1,61 @@
-/* import recipes from '../models/dummy-data.js';
+import Model from '../models';
+import jwt from 'jsonwebtoken';
+
+const Recipe = Model.Recipe;
 
 class RecipeController {
+  // POST: method for authenticated user to add a recipe
   static postRecipe(req, res) {
-  	recipes.push(req.body);
-  	res.json(recipes);
+    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    Recipe.create({
+      name: req.body.name,
+      ingredients: req.body.ingredients,
+      directions: req.body.directions,
+      creatorId: userId,
+    })
+      .then((recipe) => {
+        if (!recipe) {
+          return res.status(500).send({ message: 'Server error. Recipe could not be created' });
+        }
+        return res.status(200).send(recipe);
+      });
   }
+
 
   static putRecipe(req, res) {
-    for (let i = 0; i < recipes.length; i++) {
-      if (recipes[i].id == req.params.recipeId) {
-        for (let j = 0; j < Object.keys(req.body).length; j++) {
-          recipes[i][Object.keys(req.body)[j]] = req.body[Object.keys(req.body)[j]];
+    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    Recipe.findById(req.params.recipeId)
+      .then((recipe) => {
+        if (!recipe) {
+          return res.status(404).send({ error: 'Recipe not found' });
         }
-        return res.json(recipes);
-      }
-    }
 
-    return res.status(404).json({ error: 'Not found' });
-  }
+        if (userId != recipe.creatorId) {
+          console.log("USERID ", userId);
+          console.log("recipeID", recipe.creatorId);
+          return res.status(400).send({ error: 'You do not have pernission to modify this recipe' });
+        }
 
-  static deleteRecipe(req, res) {
-    for (let i = 0; i < recipes.length; i++) {
-      if (recipes[i].id == req.params.recipeId) {
-        recipes.splice(i, 1);
-        return res.json(recipes);
-      }
-    }
+        Recipe.update({
+          name: req.body.name || recipe.name,
+          ingredients: req.body.ingredients || recipe.ingredients,
+          directions: req.body.directions || recipe.directions,
+        }, {
+          where: {
+            userId: recipe.creatorId,
+          },
+        }).then(updatedRecipe => {
+          if (!updatedRecipe) {
+            return res.status(500).send({ error: 'Could not update recipe' });
+          }
 
-    return res.status(404).json({ error: 'Not found' });
-  }
+          return res.status(200).send({message: "Recipe Updated"});
+        });
 
-  static getRecipes(req, res) {
-    if (req.query.sort == 'upvotes' && req.query.order == 'des') {
-      const sortedRecipes = recipes.sort((a, b) => b.upvotes - a.upvotes);
-      return res.json(sortedRecipes);
-    }
-
-    return res.json(recipes);
-  }
-
-  static postRecipeReview(req, res) {
-    for (let i = 0; i < recipes.length; i++) {
-      if (recipes[i].id == req.params.recipeId) {
-        recipes[i].reviews.push(req.body);
-        return res.json(recipes);
-      }
-    }
-
-    return res.status(404).json({ error: 'Not found' });
+      });
   }
 }
 
 
 export default RecipeController;
-
-*/
 

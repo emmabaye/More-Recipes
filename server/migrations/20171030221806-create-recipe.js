@@ -20,6 +20,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      creatorId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
