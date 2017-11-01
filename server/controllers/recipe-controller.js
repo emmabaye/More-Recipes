@@ -31,8 +31,8 @@ class RecipeController {
         }
 
         if (userId != recipe.creatorId) {
-          console.log("USERID ", userId);
-          console.log("recipeID", recipe.creatorId);
+          console.log('USERID ', userId);
+          console.log('recipeID', recipe.creatorId);
           return res.status(400).send({ error: 'You do not have pernission to modify this recipe' });
         }
 
@@ -44,14 +44,13 @@ class RecipeController {
           where: {
             userId: recipe.creatorId,
           },
-        }).then(updatedRecipe => {
+        }).then((updatedRecipe) => {
           if (!updatedRecipe) {
             return res.status(500).send({ error: 'Could not update recipe' });
           }
 
-          return res.status(200).send({message: "Recipe Updated"});
+          return res.status(200).send({ message: 'Recipe Updated' });
         });
-
       });
   }
 }
