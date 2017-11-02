@@ -7,7 +7,7 @@ console.log(User);
 
 class UserController {
   static postSignUp(req, res) {
-  	User.findOne({ where: { email: req.body.email } })
+  	User.findOne({ where: { email: req.body.email.trim().toLowerCase() } })
   	.then((existingUser) => {
   		if (existingUser) {
   			return res.status(409).json({ error: 'This Email has already been used' });
@@ -59,6 +59,18 @@ class UserController {
   		}
 
   		return res.status(200).send(user.favoriteRecipes);
+  	});
+  }
+
+  // GET: Get details of a user by id
+  static getUserDetails(req, res) {
+  	return User.findById(req.params.userId)
+  	.then((user) => {
+  		if (!user) {
+  			res.status(404).json({ error: 'User not found' });
+  		}
+  		user.password = 'Access Denied';
+  		res.status(200).json({ status: 'success', data: user });
   	});
   }
 }
