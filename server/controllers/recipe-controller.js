@@ -191,7 +191,8 @@ class RecipeController {
             }
 
             return res.status(200).send({
-              status: "Success"
+              status: "Success",
+              data: user.favoriteRecipes
             });
           });
 
