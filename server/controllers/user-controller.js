@@ -7,6 +7,7 @@ console.log(User);
 
 class UserController {
   static postSignUp(req, res) {
+  	const hash = bcrypt.hashSync(req.body.password, 7);
   	User.findOne({ where: { email: req.body.email.trim().toLowerCase() } })
   	.then((existingUser) => {
   		if (existingUser) {
@@ -23,16 +24,16 @@ class UserController {
           interests: req.body.interests,
         }).then(() => {
           User.findOrCreate({ where: { email: req.body.email } })
-            .spread(((user) => {
+            .then((user) => {
               console.log('CREATED USER ', user);
               const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
               res.status(200).json({ auth: true, token });
-            }));
+            });
         })
           .catch(err => res.status(200).json({ error: 'User was not created' }));
   	});
 
-    const hash = bcrypt.hashSync(req.body.password, 7);
+    
   }
 
 
@@ -73,6 +74,8 @@ class UserController {
   		res.status(200).json({ status: 'success', data: user });
   	});
   }
+
+
 }
 
 export default UserController;

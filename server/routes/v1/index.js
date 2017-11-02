@@ -16,6 +16,8 @@ const routes = (app) => {
 
   app.post('/api/v1/recipes', isLoggedIn, RecipeController.postRecipe);
 
+  app.post('/api/v1/recipes/favorite/:recipeId', isLoggedIn, RecipeController.postFavoriteRecipe);
+
   app.put('/api/v1/recipes/:recipeId', isLoggedIn, RecipeController.putRecipe);
 
   app.delete('/api/v1/recipes/:recipeId', isLoggedIn, RecipeController.deleteRecipe);
