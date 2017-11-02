@@ -159,11 +159,12 @@ class RecipeController {
 
 
   //POST: Mark a recipe as favorite
-  static postFavoriteRecipe(req, res) {
+ static postFavoriteRecipe(req, res) {
       const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
       return Recipe.findOne({where: {
         id: req.params.recipeId
-      }).then(recipe => {
+        }
+    }).then(recipe => {
         if(!recipe){
           return res.status(404).send({error: "Recipe not found"})
         }
@@ -174,19 +175,19 @@ class RecipeController {
           user.favoriteRecipes.push({
               "id": req.params.recipeId,
               "name": recipe.name,
-              "creatorId": userId,
+              "creatorId": userId
             });
 
           User.update({
-            favoriteRecipes: user.favoriteRecipes,
+            favoriteRecipes: user.favoriteRecipes
           }, {
             where: {
-              id: req.params.userId,
+              id: req.params.userId
             },
           }).then((user) => {
             if (!user) {
               return res.status(500).send({
-                error: 'Could not favorite recipe';
+                error: 'Could not favorite recipe'
               });
             }
 
@@ -202,7 +203,6 @@ class RecipeController {
       });
 
   }
-
 
 
 }
