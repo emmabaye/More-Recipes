@@ -2,6 +2,7 @@ import Model from '../models';
 import jwt from 'jsonwebtoken';
 
 const Recipe = Model.Recipe;
+const User = Model.User
 
 class RecipeController {
 
@@ -157,10 +158,51 @@ class RecipeController {
   }
 
 
-  static getMostUpVotedRecipes(req, res) {
-    
+  //POST: Mark a recipe as favorite
+  static postFavoriteRecipe(req, res) {
+      const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+      return Recipe.findOne({where: {
+        id: req.params.recipeId
+      }).then(recipe => {
+        if(!recipe){
+          return res.status(404).send({error: "Recipe not found"})
+        }
+
+        User.findById(userId)
+        .then(user => {
+
+          user.favoriteRecipes.push({
+              "id": req.params.recipeId,
+              "name": recipe.name,
+              "creatorId": userId,
+            });
+
+          User.update({
+            favoriteRecipes: user.favoriteRecipes,
+          }, {
+            where: {
+              id: req.params.userId,
+            },
+          }).then((user) => {
+            if (!user) {
+              return res.status(500).send({
+                error: 'Could not favorite recipe';
+              });
+            }
+
+            return res.status(200).send({
+              status: "Success"
+            });
+          });
+
+        });
+
+
+      });
 
   }
+
+
 
 }
 
