@@ -1,14 +1,18 @@
 import RecipeController from '../../controllers/recipe-controller.js';
 import UserController from '../../controllers/user-controller.js';
-import { isLoggedIn } from '../../middlewares/middlewares.js';
+import { isLoggedIn, checkSignInDetails, checkSignUpDetails} from '../../middlewares/middlewares.js';
 
 
 const routes = (app) => {
   app.get('/', (req, res) => res.json({ title: 'Welcome to MoreRecipes' }));
 
-  app.post('/api/v1/users/signup', UserController.postSignUp);
+  app.get('/api/v1/users/:userId', UserController.getUserDetails);
 
-  app.post('/api/v1/users/signin', UserController.postSignIn);
+  app.post('/api/v1/users/signup',checkSignUpDetails, UserController.postSignUp);
+
+  app.post('/api/v1/users/signin', checkSignInDetails, UserController.postSignIn);
+
+  app.get('/api/v1/recipes/:recipeId', RecipeController.getRecipe);
 
   app.post('/api/v1/recipes', isLoggedIn, RecipeController.postRecipe);
 

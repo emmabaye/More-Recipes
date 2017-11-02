@@ -4,6 +4,19 @@ import jwt from 'jsonwebtoken';
 const Recipe = Model.Recipe;
 
 class RecipeController {
+
+  // GET: Get details of a recipe by id
+  static getRecipe(req, res) {
+    return Recipe.findById(req.params.recipeId)
+    .then(recipe => {
+      if(!recipe){
+        res.status(404).json({error: "Recipe not found"})
+      }
+     
+      res.status(200).json({status: "success", data:recipe});
+    });
+  }
+
   // POST: method for authenticated user to add a recipe
   static postRecipe(req, res) {
     const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
