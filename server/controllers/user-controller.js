@@ -35,6 +35,7 @@ class UserController {
     const hash = bcrypt.hashSync(req.body.password, 7);
   }
 
+
   static postSignIn(req, res) {
   	User.findOne({ where: { email: req.body.email } })
   	.then((user) => {
@@ -42,9 +43,22 @@ class UserController {
   		if (!validPassword) {
   			return res.status(401).send({ auth: false, token: null });
   		}
-  		const token = jwt.sign({ id: user._id }, 'secretKey', { expiresIn: 86400 });
+  		const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
 
   		return res.status(200).send({ auth: true, token });
+  	});
+  }
+
+
+  static getFavoriteRecipes(req, res) {
+  	User.findOne({
+  		id: req.params.userId,
+  	}).then((user) => {
+  		if (!user) {
+  			return res.status(404).json({ error: 'User not found' });
+  		}
+
+  		return res.status(200).send(user.favoriteRecipes);
   	});
   }
 }

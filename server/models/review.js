@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     comment: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    creatorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
  Review.associate = (models) => {

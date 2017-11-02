@@ -20,6 +20,35 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      creatorId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      reviews: {
+      type: Sequelize.JSONB,
+      allowNull: true,
+      defaultValue: new Array()
+      },
+      upvotes: {
+        type: Sequelize.INTEGER,
+        defaultValue:0
+      },
+      downvotes: {
+        type: Sequelize.INTEGER,
+        defaultValue:0
+      },
+      views: {
+        type: Sequelize.INTEGER,
+        defaultValue:0
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

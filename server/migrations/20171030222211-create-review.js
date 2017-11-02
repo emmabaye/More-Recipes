@@ -16,6 +16,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      creatorId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+
       recipeId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

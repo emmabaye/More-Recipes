@@ -60,3 +60,6 @@ typings/
 # windows command files
 *.cmd
 
+
+#build folder
+build/
