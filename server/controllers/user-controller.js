@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const User = Model.User;
+const Recipe = Model.Recipe;
 console.log(User);
 
 class UserController {
@@ -60,6 +61,21 @@ class UserController {
   		}
 
   		return res.status(200).send(user.favoriteRecipes);
+  	});
+  }
+
+  static getUserRecipes(req, res) {
+  	Recipe.findAll({
+  		where:{
+  			creatorId: req.params.userId,
+  		}
+  		
+  	}).then((recipes) => {
+  		if (!recipes) {
+  			return res.status(404).json({ error: 'Recipes not found' });
+  		}
+
+  		return res.status(200).send(recipes);
   	});
   }
 

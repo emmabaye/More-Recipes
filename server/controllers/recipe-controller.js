@@ -21,17 +21,20 @@ class RecipeController {
   // POST: method for authenticated user to add a recipe
   static postRecipe(req, res) {
     const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    console.log(userId)
     Recipe.create({
       name: req.body.name,
       ingredients: req.body.ingredients,
       directions: req.body.directions,
-      creatorId: userId,
+      creatorId: userId
     })
       .then((recipe) => {
         if (!recipe) {
           return res.status(500).send({ message: 'Server error. Recipe could not be created' });
         }
         return res.status(200).send(recipe);
+      }).catch(error => {
+        return res.status(401).send({ message: 'Unauthorized. Pls sign in' });
       });
   }
 
@@ -63,7 +66,7 @@ class RecipeController {
             return res.status(500).send({ error: 'Could not update recipe' });
           }
 
-          return res.status(200).send({ message: 'Recipe Updated' });
+          return res.status(200).send({ message: 'Recipe Updated'});
         });
       });
   }
