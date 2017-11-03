@@ -20,8 +20,7 @@ class RecipeController {
 
   // POST: method for authenticated user to add a recipe
   static postRecipe(req, res) {
-    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
-    console.log(userId)
+    const userId = jwt.verify(req.headers['x-access-token'], process.env.SECRET).id;
     Recipe.create({
       name: req.body.name,
       ingredients: req.body.ingredients,
@@ -40,7 +39,7 @@ class RecipeController {
 
 
   static putRecipe(req, res) {
-    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    const userId = jwt.verify(req.headers['x-access-token'], process.env.SECRET).id;
     Recipe.findById(req.params.recipeId)
       .then((recipe) => {
         if (!recipe) {
@@ -48,8 +47,6 @@ class RecipeController {
         }
 
         if (userId != recipe.creatorId) {
-          console.log('USERID ', userId);
-          console.log('recipeID', recipe.creatorId);
           return res.status(400).send({ error: 'You do not have permnission to modify this recipe' });
         }
 
@@ -73,7 +70,7 @@ class RecipeController {
 
 
   static deleteRecipe(req, res) {
-    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    const userId = jwt.verify(req.headers['x-access-token'], process.env.SECRET).id;
     Recipe.findById(req.params.recipeId)
       .then((recipe) => {
         if (!recipe) {
@@ -81,8 +78,6 @@ class RecipeController {
         }
 
         if (userId != recipe.creatorId) {
-          console.log('USERID ', userId);
-          console.log('recipeID', recipe.creatorId);
           return res.status(400).send({ error: 'You do not have pernission to modify this recipe' });
         }
 
@@ -130,7 +125,7 @@ class RecipeController {
 
 
   static postRecipeReview(req, res) {
-    const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+    const userId = jwt.verify(req.headers['x-access-token'], process.env.SECRET).id;
     Recipe.findById(req.params.recipeId)
       .then((recipe) => {
         if (!recipe) {
@@ -163,7 +158,7 @@ class RecipeController {
 
   //POST: Mark a recipe as favorite
  static postFavoriteRecipe(req, res) {
-      const userId = jwt.verify(req.headers['x-access-token'], 'secretKey').id;
+      const userId = jwt.verify(req.headers['x-access-token'], process.env.SECRET).id;
       return Recipe.findOne({where: {
         id: req.params.recipeId
         }

@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 
 const User = Model.User;
 const Recipe = Model.Recipe;
-console.log(User);
 
 class UserController {
   static postSignUp(req, res) {
@@ -26,15 +25,12 @@ class UserController {
         }).then(() => {
           User.findOrCreate({ where: { email: req.body.email } })
             .then((user) => {
-              console.log('CREATED USER ', user);
-              const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
+              const token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: 86400 });
               res.status(200).json({ auth: true, token });
             });
         })
           .catch(err => res.status(200).json({ error: 'User was not created' }));
   	});
-
-    
   }
 
 
@@ -45,7 +41,7 @@ class UserController {
   		if (!validPassword) {
   			return res.status(401).send({ auth: false, token: null });
   		}
-  		const token = jwt.sign({ id: user.id }, 'secretKey', { expiresIn: 86400 });
+  		const token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: 86400 });
 
   		return res.status(200).send({ auth: true, token });
   	});
@@ -66,10 +62,10 @@ class UserController {
 
   static getUserRecipes(req, res) {
   	Recipe.findAll({
-  		where:{
+  		where: {
   			creatorId: req.params.userId,
-  		}
-  		
+  		},
+
   	}).then((recipes) => {
   		if (!recipes) {
   			return res.status(404).json({ error: 'Recipes not found' });
@@ -90,8 +86,6 @@ class UserController {
   		res.status(200).json({ status: 'success', data: user });
   	});
   }
-
-
 }
 
 export default UserController;

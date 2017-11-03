@@ -1,6 +1,6 @@
 import RecipeController from '../../controllers/recipe-controller.js';
 import UserController from '../../controllers/user-controller.js';
-import { isLoggedIn, checkSignInDetails, checkSignUpDetails} from '../../middlewares/middlewares.js';
+import { isLoggedIn, checkSignInDetails, checkSignUpDetails } from '../../middlewares/middlewares.js';
 
 
 const routes = (app) => {
@@ -8,7 +8,7 @@ const routes = (app) => {
 
   app.get('/api/v1/users/:userId', UserController.getUserDetails);
 
-  app.post('/api/v1/users/signup',checkSignUpDetails, UserController.postSignUp);
+  app.post('/api/v1/users/signup', checkSignUpDetails, UserController.postSignUp);
 
   app.post('/api/v1/users/signin', checkSignInDetails, UserController.postSignIn);
 
