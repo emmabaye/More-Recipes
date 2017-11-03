@@ -26,7 +26,9 @@ const routes = (app) => {
 
   app.get('/api/v1/recipes', RecipeController.getAllRecipes);
 
-  app.get('/api/v1/users/:userId/recipes', isLoggedIn, UserController.getFavoriteRecipes);
+  app.get('/api/v1/users/:userId/recipes', UserController.getUserRecipes);
+
+  app.get('/api/v1/users/:userId/recipes/favorite', isLoggedIn, UserController.getFavoriteRecipes);
 };
 
 export default routes;
