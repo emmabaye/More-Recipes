@@ -1,7 +1,7 @@
 body{
 	background-image: url('../img/purple1.jpg');
 	background-repeat: repeat;
-	background-color: green;
+	background-color: white;
 
 }
 
@@ -10,11 +10,11 @@ body{
 }
 
 .navbar a{
-	color: grey !important;
+	color: white !important;
 }
 
 .navbar a.navbar-brand{
-	color: yellow !important;
+	color: white !important;
 }
 
 
@@ -37,8 +37,12 @@ body{
 
 .recipe-features{
 	color: white;
-	padding-bottom: 200px;
+	padding-bottom: 150px;
 
+}
+
+.recipe-features > h2 {
+	text-shadow: 1px 1px 3px black;
 }
 
 .feature{
@@ -47,8 +51,22 @@ body{
 	border-color: white;
 	border-width: 1px;
 	border-radius: 2px;
+	box-shadow: 2px 10px 5px black;
 
 	
+}
+
+.popular-feature{
+	color: white;
+	text-shadow: 2px 2px 4px black;
+	min-height: 250px;
+	padding-bottom: 50px;border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	border-radius: 2px;
+	box-shadow: 2px 10px 5px black;
+	background-image: url("../img/food.jpg");
+	background-size:cover;
 }
 
 /**** Catalog ****/
